@@ -1,0 +1,16 @@
+<h1> <b style="color: black;"> "<%= @variant.name %>" </b> - <%= @variant.crawler %>  </h1>
+<% unless @possible_clears.empty? %>
+<h2> Locatii asemanatoare </h2>
+<ol>
+<% @possible_clears.each do |c| %>
+  <li><%= link_to c.name, {:action => 'set_cleared', :id => @variant.id, :cleared_id => c.id}, :method => :post %></li>
+<% end %>
+</ol>
+<% end %>
+<% form_for @venue, :url => create_from_variant_venues_path(:variant_id => @variant.id) do |f|%>
+    <%= f.label :name, 'Name' %>        <%= f.text_field :name  %>      <br/>
+    <%= f.label :address, 'Address' %>  <%= f.text_field :address  %>   <br/>
+    <%= f.label :locality_id, 'Locality' %>  <%= f.select :locality_id, Locality.find(:all).collect {|l| [l.name, l.id]}  %>   <br/>
+    <%= submit_tag 'Create'  %>
+    <%= link_to 'Skip as incorrect', skip_as_incorrect_venue_variant_path(@variant), :method => :post %>
+<% end %>

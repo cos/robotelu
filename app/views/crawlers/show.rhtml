@@ -1,0 +1,21 @@
+<h1> <%= @crawler.name %> </h1>
+<div>
+<%= button_to 'Crawl!', crawl_crawler_path, :method => :put %>
+<%= button_to 'Clear variants!', clear_variants_crawler_path, :method => :put %>
+</div>
+
+<div>
+  <h2><a href="#" onclick="$('last_log').toggle()"> Last log </a> </h2>
+  <div id="last_log" style="display: none;">
+    <%= @last_log.to_s.gsub("\n","<br/>") %>
+  </div>
+</div>
+<div>
+<%= render :active_scaffold => 'locality_variants', :constraints => {:crawler_id => @crawler.id } if @crawler.locality_variants.count > 0 %>
+</div>
+<div>
+<%= render :active_scaffold => 'venue_variants', :constraints => {:crawler_id => @crawler.id } if @crawler.venue_variants.count > 0 %>
+</div>
+<div>
+<%= render :active_scaffold => 'event_variants', :constraints => {:crawler_id => @crawler.id } if @crawler.event_variants.count > 0 %>
+</div>

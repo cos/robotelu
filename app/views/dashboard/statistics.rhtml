@@ -1,0 +1,20 @@
+<h2> Statistics </h2> 
+<%  if @locality_reviews + @venue_reviews + @event_reviews[:new] + @event_reviews[:changed] == 0 %>
+<div style="background-color:lime; padding: 10px; font-weight: bold;">
+  Everything clear :)
+</div>
+<% end %>
+<dl>
+  <dt>Locality</dt> 
+  <dd <%= 'class="done"' if @locality_reviews == 0 %> > Variants to review:  <%= @locality_reviews  %></dd>
+  
+  <dt>Venue</dt> 
+  <dd <%= 'class="done"' if @venue_reviews == 0 %> > Variants to review:  <%= @venue_reviews  %></dd>
+  
+  <dt>Events</dt>   
+  <dd <%= 'class="done"' if @event_reviews[:new] == 0 %> >New variants: <%= @event_reviews[:new]  %></dd>  
+  <dd <%= 'class="done"' if @event_reviews[:changed] == 0 %> >Changed variants:<%= @event_reviews[:changed]  %></dd>  
+  <br/>
+  <dd> Active: <%= @active_events %> </dd>
+  <dd> Old: <%= @old_events %> </dd>
+</dl>

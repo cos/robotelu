@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  subject_type: MyString
+  subject_id: 1
+  level: MyString
+  title: MyString
+  text: MyText
+
+two:
+  subject_type: MyString
+  subject_id: 1
+  level: MyString
+  title: MyString
+  text: MyText

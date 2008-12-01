@@ -1,0 +1,7 @@
+/config/
+/log/
+/nbproject/
+/tmp/
+/vendor/
+/public/dispatch.*
+!/config/routes.rb

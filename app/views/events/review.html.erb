@@ -1,0 +1,37 @@
+<h1> <%= @event.title + ' - ' + @event.venue.name %> </h1>
+
+
+<% form_for @event, :url => update_from_review_event_path(@event) do |f|%>
+    <%= f.label :title, 'Title' %>        <%= f.text_field :title  %>      <br/>
+    
+    <%= f.label :keywords, 'Keywords' %>        <%= f.text_field :keywords  %>      <br/>
+    
+    <%= f.label :venue_id, 'Venue' %>  <%= f.select :venue_id, @possible_venues.collect {|l| [l.name, l.id]}  %>   <br/>
+    <br/>
+    <%= f.label :date, 'Date' %> <%= f.date_select(:date)  %>      <br/>
+    <%= f.label :time, 'Time' %>        <%= f.time_select(:time)  %> <%= check_box_tag :ignore_time, 'true' , @event.time.nil? %> Ignore time     <br/>
+    <br/>
+    <%= f.label :end_date, 'End Date' %>        <%= f.date_select(:end_date)  %>  <%= check_box_tag :ignore_end_date, 'true' , @event.end_date.nil? %> Ignore end date    <br/>
+    <%= f.label :end_time, 'End Time' %>        <%= f.time_select(:end_time)  %>  <%= check_box_tag :ignore_end_time, 'true' , @event.end_time.nil? %> Ignore end time    <br/>
+    <br/>    
+    <%= f.label :description, 'Description' %>  <%= f.text_area :description, :rows => '10', :cols => '50'  %>   <br/>
+    <%= f.label :url, 'Url' %>  <%= f.text_field :url %>   <br/>
+    <%= submit_tag 'Update'  %>
+<% end %>
+
+<h2> Variants </h2>
+<ol>
+<% @variants.each do |v| %>
+  <li <%= 'style = "background-color: lime"' if v.review %> >
+    <b> <%= v.title %> </b> - Crawler: <%= v.crawler %>  <br/>    
+    Date: <%= v.date.to_s :long %> <br/>
+    Time: <%= v.time.strftime('%H:%M') if v.time %> <br/>
+    <br/>
+    End Date: <%= v.end_date.to_s :long if v.end_date %> <br/>
+    End Time: <%= v.end_time.strftime('%H:%M') if v.end_time %> <br/>
+    <br/>
+    Description: <%= v.description.to_s.gsub("\n", '<br/>') %><br/><br/>
+    Url: <%= v.url %>
+  </li>
+<% end %>
+</ol>

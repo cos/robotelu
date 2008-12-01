@@ -1,0 +1,17 @@
+<h1> Dashboard </h1>
+<%= flash[:notice] %>
+<%= periodically_call_remote(:url => {:action => 'worker_status'}, :frequency => '0.5', :update => 'worker_status') %>
+<%= periodically_call_remote(:url => {:action => 'statistics'}, :frequency => '0.5', :update => 'statistics') %>
+
+<div id="statistics">
+</div>
+
+<br/> 
+
+<div>
+  <%= link_to 'Crawl!', :action => 'crawl' %> 
+  |<%= link_to 'Start crawler', :action => 'start_crawler' %>
+</div>
+
+<div id="worker_status">
+</div>

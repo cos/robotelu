@@ -1,0 +1,27 @@
+<h1> <b style="color: black;"> "<%= @variant.title %>" </b> - <%= @variant.crawler %>  </h1>
+<% unless @possible_clears.empty? %>
+<h2> Evenimente asemanatoare </h2>
+<ol>
+<% @possible_clears.each do |c| %>
+  <li>
+    <%= link_to c.title, {:action => 'set_cleared', :id => @variant.id, :cleared_id => c.id}, :method => :post %> <br/>
+    <%= c.venue %>
+  </li>
+<% end %>
+</ol>
+<% end %>
+<% form_for @event, :url => create_from_variant_events_path(:variant_id => @variant.id) do |f|%>
+    <%= f.label :title, 'Title' %>        <%= f.text_field :title  %>      <br/>
+    <%= f.label :venue_id, 'Venue' %> <%= '<b style="color:red"> necunoscuta!</b>' if @variant.venue.nil? %> <%= f.select :venue_id, @possible_venues.collect {|l| [l.name, l.id]} %>   <br/><br/>
+    
+    
+    <%= f.label :date, 'Date' %> <%= '<b style="color:red"> necunoscuta!</b>' if @variant.date.nil? %> <%= f.date_select(:date)  %>      <br/>
+    <%= f.label :end_date, 'End Date' %>        <%= f.date_select(:end_date)  %>  <%= check_box_tag :ignore_end_date, 'true' , @variant.end_date.nil? %> Ignore  <br/>
+    <br/>
+    <%= f.label :time, 'Time' %>        <%= f.time_select(:time, :minute_step => 5 )  %> <%= check_box_tag :ignore_time, 'true' , @variant.time.nil? %> Ignore     <br/>
+    <%= f.label :end_time, 'End Time' %>        <%= f.time_select(:end_time, :minute_step => 5)  %>  <%= check_box_tag :ignore_end_time, 'true' , @variant.end_time.nil? %> Ignore <br/>
+    <br/>    
+    <%= f.label :description, 'Description' %>  <%= f.text_area :description, :rows => '5'  %>   <br/>
+    <%= f.label :url, 'Url' %>  <%= f.text_field :url, :size => 100 %>   <br/>
+    <%= submit_tag 'Create'  %> <%= link_to 'Skip as incorrect', skip_as_incorrect_event_variant_path(@variant), :method => :post %>
+<% end %>

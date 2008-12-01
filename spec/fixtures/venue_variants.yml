@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  venue_id: 1
+  crawler_id: 1
+  state: MyString
+  name: MyString
+  locality_variant_id: 1
+  address: MyText
+
+two:
+  venue_id: 1
+  crawler_id: 1
+  state: MyString
+  name: MyString
+  locality_variant_id: 1
+  address: MyText

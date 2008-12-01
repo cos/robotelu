@@ -1,0 +1,17 @@
+<h1> <%= @venue.name %>   </h1>
+
+<% form_for @venue, :url => update_from_review_venue_path do |f| %>
+    <%= f.label :name, 'Name' %>        <%= f.text_field :name  %>      <br/>
+    <%= f.label :address, 'Address' %>  <%= f.text_field :address  %>   <br/>
+    <%= submit_tag 'Update'  %>
+<% end  %>
+
+<h2> Variants </h2>
+<ol>
+<% @variants.each do |v| %>
+  <li <%= 'style = "background-color: lime"' if v.review %> >
+    <b> <%= v.name %> </b> - Crawler: <%= v.crawler %>  <br/>
+    Address: <%= v.address %>
+  </li>
+<% end %>
+</ol>

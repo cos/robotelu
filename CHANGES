@@ -1,0 +1,13 @@
+== Current version
+    Great big refactoring, 50% less code, 50% more functionality
+
+Fixes:
+* changed active_scaffold.js around line 26 as instructed here: http://code.google.com/p/activescaffold/issues/detail?id=553&can=1&q=a.cancel%22).first().link%20is%20undefined
+
+== Version 0.1.1
+ Improved state synchronization.
+ Enter and exit state callbacks - bit similar to acts_as_state_machine
+ Many cleanups.
+
+== Version 0.1
+ First working version

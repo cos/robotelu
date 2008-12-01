@@ -1,0 +1,26 @@
+<div style="text-align: center;">
+<table style="display:inline;"  >
+  <tr>
+    <th>Admin</th>
+    <th>Variant</th>
+    <th>Clear</th>
+  </tr>
+  <tr>
+    <td>
+      <%= link_to 'Dashboard', :controller => 'dashboard', :action => 'overview' %> <br/>
+      <%= link_to 'Crawlers', crawlers_path %><br/>
+      <%= link_to 'Review', review_next_locality_variants_path %>
+    </td>
+    <td>
+      <%= link_to 'Locality', locality_variants_path %> <br/>
+      <%= link_to 'Venue', venue_variants_path %> <br/>
+      <%= link_to 'Event', event_variants_path %> <br/>      
+    </td>
+    <td>
+      <%= link_to 'Localities', localities_path %> <br/>
+      <%= link_to 'Venues', venues_path %> <br/>
+      <%= link_to 'Events', events_path %> <br/>
+    </td>
+  </tr>
+</table>
+</div>

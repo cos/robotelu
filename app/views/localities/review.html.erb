@@ -1,0 +1,14 @@
+<h1> <%= @locality.name %>   </h1>
+
+<% form_for @locality, :url => update_from_review_locality_path do |f| %>
+    <%= f.label :name, 'Name' %>
+    <%= f.text_field :name  %>
+    <%= submit_tag 'Update'  %>
+<% end  %>
+
+<h2> Variants </h2>
+<ol>
+<% @variants.each do |v| %>
+  <li><b> <%= v.name %> </b> - Crawler: <%= v.crawler %>  </li>
+<% end %>
+</ol>

@@ -1,0 +1,13 @@
+<h1> <b style="color: black;"> "<%= @variant.name %>" </b> - <%= @variant.crawler %>  </h1>
+
+<h2> Localitati asemanatoare </h2>
+<ol>
+<% @possible_clears.each do |c| %>
+  <li><%= link_to c.name, {:action => 'set_cleared', :id => @variant.id, :cleared_id => c.id}, :method => :post %></li>
+<% end %>
+</ol>
+<% form_for @locality, :url => create_from_variant_localities_path(:variant_id => @variant.id) do |f|%>
+    <%= f.label :name, 'Name' %>
+    <%= f.text_field :name  %>
+    <%= submit_tag 'Create'  %>
+<% end %>

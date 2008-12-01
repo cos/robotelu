@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  event_id: 1
+  crawler_id: 1
+  state: MyString
+  title: MyString
+  venue_variant_id: 1
+  start_date: 2008-02-06
+  start_time: 2008-02-06 21:30:08
+
+two:
+  event_id: 1
+  crawler_id: 1
+  state: MyString
+  title: MyString
+  venue_variant_id: 1
+  start_date: 2008-02-06
+  start_time: 2008-02-06 21:30:08
