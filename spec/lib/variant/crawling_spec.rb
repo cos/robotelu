@@ -6,7 +6,6 @@ describe Variant::Crawling do
   end
 
   it "should desc" do
-    # TODO
   end
 end
 
