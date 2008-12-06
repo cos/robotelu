@@ -2,6 +2,8 @@
 /log/
 /nbproject/
 /tmp/
-/vendor/plugins
+/vendor/plugins/rspec/
+/vendor/plugins/rspec_on_rails/
+/vendor/plugins/rspec-rails/
 /public/dispatch.*
 !/config/routes.rb
