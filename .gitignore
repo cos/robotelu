@@ -2,6 +2,6 @@
 /log/
 /nbproject/
 /tmp/
-/vendor/
+/vendor/plugins
 /public/dispatch.*
 !/config/routes.rb
