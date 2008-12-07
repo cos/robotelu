@@ -1,10 +1,10 @@
 class MetalHeadRoTimisoara < CrawlerProcess
-  def crawl!    
-  	agent = get_agent('UTF-8')
-  	listing_page = agent.get('http://www.metalhead.ro/Concerte-si-Evenimente-Rock-si-Metal.html')
+  def crawl!  	
+  listing_page = agent.get('http://www.metalhead.ro/Concerte-si-Evenimente-Rock-si-Metal.html')
 	
 	with_context(:locality_name => "Timisoara") do
-		events_listing_table = listing_page/"//td[@width='444']"
+		events_listing_table = listing_page/"//td[@width='500']"
+    log 'Found '+events_listing_table.length.to_s+' event listings'
 		events_listing_table.each do |event_listing| 
 			event_url = (event_listing/"b/a").first[:href]
 			event_title = (event_listing/"b/a").inner_html.clean_as_title

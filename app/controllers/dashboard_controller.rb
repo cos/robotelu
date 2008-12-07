@@ -11,7 +11,7 @@ class DashboardController < ApplicationController
     @locality_reviews = LocalityVariant.count :conditions => {:review => true}    
     @venue_reviews = VenueVariant.count :conditions => {:review => true}    
     @event_reviews = {}
-    @event_reviews[:new] = EventVariant.count :conditions => "review = 1 and cleared_id is null"
+    @event_reviews[:new] = EventVariant.count :conditions => "review = 1 and cleared_id is null and (date>=curdate() or end_date>=curdate())"
     @event_reviews[:changed] = EventVariant.count :conditions => "review = 1 and cleared_id is not null"
     
     @active_events = Event.count :conditions => ["date >= curdate()"]

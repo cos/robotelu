@@ -3,9 +3,9 @@ class OperaRomanaTimisoara < CrawlerProcess
     agent = get_agent('iso-8859-1')
     page = agent.get("http://www.ort.ro/")    
     with_context(:locality_name => "Timisoara", :venue_name => 'Opera Nationala Romana Timisoara') do      
-      events = page/'/html/body/table/tr[12]/td/table/tr/td/table/tr[2]/td/table/tr'
-      events.each do |e|
-        begin
+      events = page/'/html/body/table/tr[11]/td/table/tr/td/table/tr[2]/td/table/tr'
+      log 'Found '+events.length.to_s+' events.'
+      events.each do |e|        
           title = e % 'td[2]/div/span[1]' 
           title = title.inner_html.clean_as_title
           
@@ -23,10 +23,7 @@ class OperaRomanaTimisoara < CrawlerProcess
           description += [(e % "td[2]/div/strong").inner_html.strip]
           description = description.join '<br/>'
           
-          propose_event(:title => title, :date => date, :time => time, :url => url, :description => description)
-        rescue
-          
-        end
+          propose_event(:title => title, :date => date, :time => time, :url => url, :description => description)        
       end
     end
   end

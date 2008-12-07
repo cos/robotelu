@@ -2,9 +2,15 @@ require 'singleton'
 require 'clean_page'
 
 class CrawlerProcess
-  include Singleton 
+  include Singleton
   include ::ActionView::Helpers::SanitizeHelper
-  
+  extend ::ActionView::Helpers::SanitizeHelper::ClassMethods
+  @@charset = 'UTF-8'
+
+  def agent
+    @agent || (@agent = get_agent(@@charset))
+  end
+
   def get_agent(charset)
     agent = WWW::Mechanize.new
     CleanPage.charset = charset

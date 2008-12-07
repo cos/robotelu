@@ -9,7 +9,7 @@ class EventVariantsController < ApplicationController
   end
 
   def review_next
-    @variant = EventVariant.find(:first, :conditions => {:review => true})
+    @variant = EventVariant.find(:first, :conditions => ["review = 1 and (date>=curdate() or end_date>=curdate())"])
     if(@variant)
       if(@variant.cleared?)
         redirect_to review_event_path(:id => @variant.cleared.id)        
