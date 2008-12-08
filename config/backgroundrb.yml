@@ -1,0 +1,10 @@
+--- 
+:backgroundrb: 
+  :ip: localhost
+  :port: 11006
+:schedules:
+    :lonely_worker:
+        :crawl_all:
+            :triger_args: * */10 * * * * *
+        :interpret_all:
+            :triger_args: * */5 * * * * *
