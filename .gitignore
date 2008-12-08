@@ -1,6 +1,4 @@
-/config/
-/log/
+/log/*
 /nbproject/
-/tmp/
-/public/dispatch.*
+/tmp/*
 !/config/routes.rb
