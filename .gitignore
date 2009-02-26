@@ -1,4 +1,4 @@
-/log/*
+/log/
 /nbproject/
-/tmp/*
+/tmp/
 !/config/routes.rb
